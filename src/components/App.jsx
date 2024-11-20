@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import ToDoItem from "./ToDoItem";
+import Heading from "./Heading";
 
 function App() {
   const [listItem, updateListItem] = useState("");
@@ -18,9 +20,7 @@ function App() {
 
   return (
     <div className="container">
-      <div className="heading">
-        <h1>To-Do List</h1>
-      </div>
+      <Heading />
       <div className="form">
         <input onChange={handleChange} type="text" value={listItem} />
         <button onClick={handleClick}>
@@ -29,9 +29,12 @@ function App() {
       </div>
       <div>
         <ul>
-          {list.map((item, index) => {
-            return <li key={index}>{item}</li>;
-          })}
+          {list.map((item, index) => (
+            <ToDoItem
+            text={item}
+            key={index}
+            />
+          ))}
         </ul>
       </div>
     </div>
