@@ -18,6 +18,14 @@ function App() {
     updateListItem("");
   }
 
+  function deleteItem(id) {
+    updateList((prevItems) => {
+      return prevItems.filter((item, index) => {
+        return index !== id;
+      });
+    });
+  }
+
   return (
     <div className="container">
       <Heading />
@@ -32,7 +40,9 @@ function App() {
           {list.map((item, index) => (
             <ToDoItem
             text={item}
+            onChecked={deleteItem}
             key={index}
+            id={index}
             />
           ))}
         </ul>
